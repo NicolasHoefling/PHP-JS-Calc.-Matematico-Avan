@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Calculadora Matemática Avançada</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- links w3 -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- W3 CSS COLORS -->    
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-signal.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-highway.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-vivid.css">
+<!-- FONTS GOOGLE -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/8a4e2e6b4c.js" crossorigin="anonymous"></script>
+
+    <style>
+        /* USO DAS FONTS EM */
+        h1, h2, a{
+            font-family: "Oswald", sans-serif;
+        }
+        h3, h5, label{
+            font-family: 'Roboto Mono', sans-serif;
+        }
+        /* CORES DO JS */
+        .w3-js-input {color:rgb(0, 0, 0) !important; background-color:#e3c100 !important}
+        .w3-js-fundo {color:rgb(0, 0, 0) !important; background-color:#e3c02786 !important}
+        /* .w3-text-input {color:#ffffff !important}
+        .w3-text-input-theme {color:rgb(0, 0, 0) !important} */
+        .w3-border-input {border-color:rgb(0, 0, 0) !important}
+        .w3-hover-border-input:hover {border-color:rgb(255, 255, 255) !important}
+
+        input::placeholder {
+            color: rgb(81, 81, 81);
+        } 
+    </style>
+</head>
+
+<body class="w3-js-fundo">
+    <div class="w3-signal-black">
+        <div class="w3-row">
+            <div class="w3-col w3-center w3-border-bottom w3-signal-black" style="width: 100%;">
+                <h2>Sistema de Cálculo Matemático Avançado</h2>
+            </div>
+        </div> 
+    </div>
+
+<!-- NAV -->
+    <div class="w3-bar w3-vivid-black w3-border-bottom w3-border-yellow">
+        <a href="index.php" class="w3-bar-item w3-button">
+            <i class="fa fa-house" style="font-size: 24px;"></i>
+        </a>
+        <a href="js.html" class="w3-bar-item w3-button w3-hover-amber w3-hover-text-black w3-blue">
+            <i class="fa-brands fa-js" style="font-size:24px"></i>
+        </a>
+        <a href="php.php" class="w3-bar-item w3-button w3-hover-indigo w3-hover-text-black">
+            <i class="fa-brands fa-php" style="font-size:24px"></i>
+        </a>
+        <a href="relatorio.php" class="w3-bar-item w3-button w3-hover-red w3-hover-text-black">
+            <i class="fa-solid fa-file-pdf" style="font-size:24px"></i>
+        </a>
+    </div>
+
+    <div style="margin-left: 20%; margin-right: 20%;">
+        <h2 class="w3-center w3-container">Valores em JavaScript</h2>
+    
+        <div class="w3-container w3-row w3-js-input w3-section w3-card-4 w3-border w3-bottombar w3-rightbar w3-round-xxlarge w3-border-input w3-hover-border-input w3-padding">
+            <label for="fibonacci" >NÚMERO DE TERMOS DA SÉRIE DE FIBONACCI:</label>
+            <input class="w3-animate-input w3-margin-top w3-input w3-border-bottom  w3-border-input w3-round-xlarge w3-text-input-theme" type="number" style="background-color: rgba(48, 48, 0, 0.282); width: 40%;" id="fibonacci" placeholder="Ex: 50">
+            <p id="fibonacciResult"></p>
+            <button class="w3-vivid-black w3-button w3-card-4 w3-margin-top w3-round-xlarge w3-padding w3-margin w3-hover-yellow" onclick="calculateFibonacci()"><i class="fa-solid fa-calculator" style="color: #FFD43B;"></i> Calcular</button>
+        </div>
+
+        <div class="w3-container w3-row w3-js-input w3-section w3-card-4 w3-border w3-bottombar w3-rightbar w3-round-xxlarge w3-border-input w3-hover-border-input w3-padding">
+            <label for="factorial">FATORIAL DE:</label>
+            <input class="w3-animate-input w3-margin-top w3-input w3-border-bottom  w3-border-input w3-round-xlarge w3-text-input-theme" type="number" style="background-color: rgba(48, 48, 0, 0.282); width: 40%;" id="factorial" placeholder="Ex: 100">
+            <p id="factorialResult"></p>
+            <button class="w3-vivid-black w3-button w3-card-4 w3-margin-top w3-round-xlarge w3-padding w3-margin w3-hover-yellow" onclick="calculateFactorial()"><i class="fa-solid fa-calculator" style="color: #FFD43B;"></i> Calcular</button>
+        </div>
+
+        <div class="w3-container w3-row w3-js-input w3-section w3-card-4 w3-border w3-bottombar w3-rightbar w3-round-xxlarge w3-border-input w3-hover-border-input w3-padding">
+            <label for="matrixSize">TAMANHO DA MATRIZ (para soma e multiplicação):</label>
+            <input class="w3-animate-input w3-margin-top w3-input w3-border-bottom  w3-border-input w3-round-xlarge w3-text-input-theme" type="number" style="background-color: rgba(48, 48, 0, 0.282); width: 40%;" id="matrixSize" placeholder="Ex: 1000">
+            <p id="matrixResult"></p>
+            <button class="w3-vivid-black w3-button w3-card-4 w3-margin-top w3-round-xlarge w3-padding w3-margin w3-hover-yellow" onclick="generateMatrices()"><i class="fa-solid fa-calculator" style="color: #FFD43B;"></i> Gerar Matrizes</button>
+            <button class="w3-vivid-black w3-button w3-card-4 w3-margin-top w3-round-xlarge w3-padding w3-margin w3-hover-yellow" onclick="addMatrices()"><i class="fa-solid fa-plus"style="color: #FFD43B ;"></i> Somar Matrizes</button>
+            <button class="w3-vivid-black w3-button w3-card-4 w3-margin-top w3-round-xlarge w3-padding w3-margin w3-hover-yellow" onclick="multiplyMatrices()"><i class="fa-solid fa-xmark" style="color: #FFD43B ;"></i> Multiplicar Matrizes</button>
+        </div>
+
+        <div class="w3-container w3-row w3-js-input w3-section w3-card-4 w3-border w3-bottombar w3-rightbar w3-round-xxlarge w3-border-input w3-hover-border-input w3-padding">
+            <label for="vectorSize">TAMANHO DO VETOR:</label>
+            <input class="w3-animate-input w3-margin-top w3-input w3-border-bottom  w3-border-input w3-round-xlarge w3-text-input-theme" type="number" style="background-color: rgba(48, 48, 0, 0.282); width: 40%;" id="vectorSize" placeholder="Ex: 10000">
+            <p id="vectorResult"></p>
+            <button class="w3-vivid-black w3-button w3-card-4 w3-margin-top w3-round-xlarge w3-padding w3-margin w3-hover-yellow" onclick="generateVectors()">Gerar Vetores</button>
+            <button class="w3-vivid-black w3-button w3-card-4 w3-margin-top w3-round-xlarge w3-padding w3-margin w3-hover-yellow" onclick="addVectors()"><i class="fa-solid fa-plus"style="color: #FFD43B ;"></i> Somar Vetores</button>
+            <button class="w3-vivid-black w3-button w3-card-4 w3-margin-top w3-round-xlarge w3-padding w3-margin w3-hover-yellow" onclick="multiplyVectors()"><i class="fa-solid fa-xmark" style="color: #FFD43B ;"></i> Multiplicar por Escalar</button>
+        </div>
+
+        <div class="w3-container w3-row w3-js-input w3-section w3-card-4 w3-border w3-bottombar w3-rightbar w3-round-xxlarge w3-border-input w3-hover-border-input w3-padding">
+            <label for="benchmarkIterations">NÚMERO DE INTERAÇOES PARA BENCHMARK:</label>
+            <input class="w3-animate-input w3-margin-top w3-input w3-border-bottom  w3-border-input w3-round-xlarge w3-text-input-theme" type="number" style="background-color: rgba(48, 48, 0, 0.282); width: 40%;" id="benchmarkIterations" placeholder="Ex: 1000000">
+            <p id="benchmarkResult"></p>
+            <button class="w3-vivid-black w3-button w3-card-4 w3-margin-top w3-round-xlarge w3-padding w3-margin w3-hover-yellow" onclick="benchmarkPower(parseInt(document.getElementById('benchmarkIterations').value))"><i class="fa-solid fa-calculator" style="color: #FFD43B;"></i> Executar Benchmark</button>
+        </div>
+    </div>       
+    <script src="assets/script.js"></script>
+</body>
+</html>
